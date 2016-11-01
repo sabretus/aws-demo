@@ -5,7 +5,8 @@
  4. Потрібно заінсталити локально CLI, це робиться командою `pip install awscli --ignore-installed six` (http://docs.aws.amazon.com/cli/latest/userguide/installing.html)
  5. Потім в терміналі потрібно пройти просте налаштування CLI використовуючи команду `aws configure`, вона створить папку .aws в нашій хоум директорії.
  6. Далі в потрібному нам регіоні ми створюємо пару ссш ключів які автоматично додадуться для юзера ec2-user при створенні інстансу, для цього ідем в меню EC2 -> Key Pairs
- 7. І нарешті команда яка при наявності підготовленого темплейта створить нам інстанс і все засетапить `aws cloudformation create-stack --capabilities CAPABILITY_IAM --stack-name TestJenkins --template-body file:///./aws_demo/cloudformation/aws_jenkins_demo.json`
- 8. Якщо все зроблено правильно, при поверненні до веб консолі https://console.aws.amazon.com/cloudformation/home ми побачимо наш стек в процесі створення.
- 9. При успішному створенні стеку залишається піти до EC2 і глянути який тимчасовий хостнейм засетаний для нашого нового сервера, туди можна залогінитись з ключем який ми створили на кроці 6. Команда ссш виглядатиме приблизно так `ssh ec2-user@ec2-52-90-252-89.compute-1.amazonaws.com -i jenkins_demo_key_us-east-1.pem`
- 10. Останній крок перевірити чи відкриється наша веб сторінка http://ec2-52-90-252-89.compute-1.amazonaws.com
+ 7. Для перевірки роботи CLI можна запустити команду яка порахує для нас можливі витрати на використані ресурси в темплейті і згенерує лінку на калькулятор `aws cloudformation estimate-template-cost --template-body file://./aws_demo/cloudformation/aws_jenkins_demo.json`
+ 8. І нарешті команда яка при наявності підготовленого темплейта створить нам інстанс і все засетапить `aws cloudformation create-stack --capabilities CAPABILITY_IAM --stack-name TestJenkins --template-body file://./aws_demo/cloudformation/aws_jenkins_demo.json`
+ 9. Якщо все зроблено правильно, при поверненні до веб консолі https://console.aws.amazon.com/cloudformation/home ми побачимо наш стек в процесі створення.
+ 10. При успішному створенні стеку залишається піти до EC2 і глянути який тимчасовий хостнейм засетаний для нашого нового сервера, туди можна залогінитись з ключем який ми створили на кроці 6. Команда ссш виглядатиме приблизно так `ssh ec2-user@ec2-52-90-252-89.compute-1.amazonaws.com -i jenkins_demo_key_us-east-1.pem`
+ 11. Останній крок перевірити чи відкриється наша веб сторінка http://ec2-52-90-252-89.compute-1.amazonaws.com
