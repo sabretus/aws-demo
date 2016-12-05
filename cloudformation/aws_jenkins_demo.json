@@ -257,7 +257,7 @@
   "Outputs" : {
     "WebsiteURL" : {
       "Value" : { "Fn::Join" : ["", ["http://", { "Fn::GetAtt" : [ "WebServer", "PublicDnsName" ]}, ""]] },
-      "Description" : "Jenkins Installation"
+      "Description" : "The Jenkins Installation"
     }
   }
 }
